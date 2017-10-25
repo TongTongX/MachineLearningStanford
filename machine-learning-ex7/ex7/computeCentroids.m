@@ -26,7 +26,22 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
+% for loop implementation
+% for k = 1:K
+%     M = [];
+%     for i = 1:m
+%         if idx(i) == k
+%             M = [M; X(i, :)];
+%         end
+%     end
+%     centroids(k, :) = mean(M, 1);
+% end
 
+% vectorized implementation
+for k = 1:K
+    match = (idx == k);
+    centroids(k, :) = mean(X(match, :), 1);
+end
 
 
 

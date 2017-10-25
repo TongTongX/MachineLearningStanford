@@ -20,7 +20,11 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
+for i = 1:size(X, 1)
+    % repmat creates a matrix with same rows/columns
+    M = repmat(X(i, :), [K, 1]);
+    [~, idx(i)] = min(sum((M - centroids) .^ 2, 2));
+end
 
 
 
